@@ -1,3 +1,4 @@
 /assembler
 /machine
 /*.dSYM/
+/program.txt
