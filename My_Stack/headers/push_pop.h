@@ -39,9 +39,9 @@ typedef struct stack
     STACK_ELEM*     data;
     int             size;
     int             capacity;
-    char            *creation_file;
+    const char            *creation_file;
     int             creation_line;
-} stack_t;
+} edu_stack_t;
 
 //----------------------------------------------------------------------
 
@@ -53,13 +53,13 @@ typedef struct stack
 */
 enum comparison     compare_double      (double x, double z);
 
-int                 dump                (stack_t *stk, const char *file, int line);
-int                 push                (stack_t *stk, double elem);
-int                 dtor_stack          (stack_t *stk);
-int                 pop                 (stack_t *stk, double *elem);
-int                 stack_error         (stack_t *stk, const char *file, int line);
-void                plant_bird          (stack_t *stk);
-void                check_bird          (stack_t *stk, const char *file, int line);
+int                 dump                (edu_stack_t *stk, const char *file, int line);
+int                 push                (edu_stack_t *stk, double elem);
+int                 dtor_stack          (edu_stack_t *stk);
+int                 pop                 (edu_stack_t *stk, double *elem);
+int                 stack_error         (edu_stack_t *stk, const char *file, int line);
+void                plant_bird          (edu_stack_t *stk);
+void                check_bird          (edu_stack_t *stk, const char *file, int line);
 
 //----------------------------------------------------------------------
 

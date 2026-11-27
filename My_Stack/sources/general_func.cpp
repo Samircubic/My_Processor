@@ -1,13 +1,13 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 
 #include "general_func.h"
 
-stack_t* get_point_stack (int line)
+edu_stack_t* get_point_stack (int line)
 {
-    stack_t *stk = (stack_t*) calloc (1, sizeof (stack_t));
+    edu_stack_t *stk = (edu_stack_t*) calloc (1, sizeof (edu_stack_t));
     assert (stk);
 
     stk->creation_line = line;

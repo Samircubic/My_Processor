@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 #include "my_stack.h"
 
 int main ()
 {
-    stack_t *stk = get_point_stack (__LINE__); //static - func and ... функция статик транслирует код функции только один раз в один файл, вполне можно использовать для защиты программы от взлома через некоторые функции
+    edu_stack_t *stk = get_point_stack (__LINE__); //static - func and ... функция статик транслирует код функции только один раз в один файл, вполне можно использовать для защиты программы от взлома через некоторые функции
     assert (stk);
 
     stk->creation_file = "stk"; //TODO __FILE__, read about # aqnd ## in define, __FUNC__

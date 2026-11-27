@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 #include <cstring>
@@ -11,20 +11,28 @@ int function_definition (char *cmd);
 
 int main (int argc, const char *argv[])
 {
+    if (argc != 3)
+    {
+        fprintf (stderr, "Usage: %s INPUT OUTPUT\n", argv[0]);
+        return 1;
+    }
     FILE *pointer_file_input = fopen (argv[FILE_NAME_INPUT], "rb");
-    assert (pointer_file_input);
-    printf ("%s\n", argv[FILE_NAME_INPUT]);
+    if (!pointer_file_input) { perror (argv[FILE_NAME_INPUT]); return 1; }
 
-    FILE *pointer_file_output = fopen (argv[FILE_NAME_OUTPUT], "wr");
-    assert (pointer_file_output);
+    FILE *pointer_file_output = fopen (argv[FILE_NAME_OUTPUT], "w");
+    if (!pointer_file_output)
+    {
+        perror (argv[FILE_NAME_OUTPUT]);
+        fclose (pointer_file_input);
+        return 1;
+    }
 
     int number_function = 1;
     while (number_function != 0)
     {
         char cmd[50] = "";
 
-        fscanf (pointer_file_input, "%s", cmd);
-        printf ("%s\n", cmd);
+        if (fscanf (pointer_file_input, "%49s", cmd) != 1) break;
 
         number_function = function_definition (cmd);
 
@@ -38,7 +46,7 @@ int main (int argc, const char *argv[])
             case 1:
               fprintf (pointer_file_output, "%d\n", number_function);
 
-              fscanf (pointer_file_input, "%d\n", &number);
+              if (fscanf (pointer_file_input, "%d", &number) != 1) { number_function = -1; break; }
               fprintf (pointer_file_output, "%d\n", number);
 
               break;
@@ -51,26 +59,24 @@ int main (int argc, const char *argv[])
 
               break;
             default:
-              fprintf (pointer_file_output, "%d\n", number_function);
-              fprintf (pointer_file_output, "произошла ошибка\n");
-              
+              number_function = -1;
               break;
         }
+        if (number_function < 0) break;
     }
-
-    printf ("программа переведена на машинный код\n");
+    if (number_function != 0)
+        fprintf (stderr, "Invalid instruction or missing htl\n");
 
     fclose (pointer_file_input);
     fclose (pointer_file_output);
 
-    return 0;
+    return number_function == 0 ? 0 : 1;
 }
 
 //---------------------------------------------------------------------------
 
 int function_definition (char cmd[50])
 {
-    printf ("%s\n", cmd);
     if (strcmp (cmd, "htl") == 0)
     {
         return 0;

@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 
 #include "push_pop.h"
 
-int push (stack_t *stk, double elem)
+int push (edu_stack_t *stk, double elem)
 {
     CHECK_BIRD;
 
@@ -33,7 +33,7 @@ int push (stack_t *stk, double elem)
 
 //----------------------------------------------------------------------
 
-int pop (stack_t *stk, double *elem)
+int pop (edu_stack_t *stk, double *elem)
 {
     CHECK_BIRD;
 

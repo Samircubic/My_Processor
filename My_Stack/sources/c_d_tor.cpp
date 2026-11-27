@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 
 #include "c_d_tor.h"
 
-void ctor_stack (stack_t *stk)
+void ctor_stack (edu_stack_t *stk)
 {
     assert (stk);
  //TODO rename extra, why is 3 //TODO verify()
@@ -27,7 +27,7 @@ void ctor_stack (stack_t *stk)
 
 //----------------------------------------------------------------------
 
-int dtor_stack (stack_t *stk)
+int dtor_stack (edu_stack_t *stk)
 {
     CHECK_BIRD; 
 

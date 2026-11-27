@@ -1,12 +1,12 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 
 #include "safety.h"
 
     //TODO func- verify check
-void plant_bird (stack_t *stk) //TODO my_assert -Dassert
+void plant_bird (edu_stack_t *stk) //TODO my_assert -Dassert
 {
     STACK_ASSERT;
 
@@ -17,7 +17,7 @@ void plant_bird (stack_t *stk) //TODO my_assert -Dassert
 
 //----------------------------------------------------------------------
 
-void check_bird (stack_t *stk, const char *file, int line) //TODO static-func
+void check_bird (edu_stack_t *stk, const char *file, int line) //TODO static-func
 {
     STACK_ASSERT;
 
@@ -41,7 +41,7 @@ void check_bird (stack_t *stk, const char *file, int line) //TODO static-func
 
 //----------------------------------------------------------------------
 
-int stack_error (stack_t *stk, const char *file, int line)
+int stack_error (edu_stack_t *stk, const char *file, int line)
 {
     // assert(stk) //TODO MYASSERT() - macros
     if (stk == 0) //TODO macro-local MACRO_
@@ -80,14 +80,14 @@ int stack_error (stack_t *stk, const char *file, int line)
 
 //----------------------------------------------------------------------
 
-int dump (stack_t *stk, const char *file, int line)
+int dump (edu_stack_t *stk, const char *file, int line)
 {
     CHECK_BIRD;
 
     printf ("ctack_t [" blue "%p" black "]\n"
 
             "called from " green "%s" black ": " green "%d\n" black
-            "\tname " green "%s " black "born at " green "%d" black ": "green"\n" black
+            "\tname " green "%s " black "born at " green "%d" black ": " green "\n" black
 
             "\t{\n"
 
@@ -120,7 +120,7 @@ int dump (stack_t *stk, const char *file, int line)
 
 //----------------------------------------------------------------------
 //
-// void calculation_hash (stack_t *stk)
+// void calculation_hash (edu_stack_t *stk)
 // {
 //
 //     int hash = 0;
@@ -132,7 +132,7 @@ int dump (stack_t *stk, const char *file, int line)
 //
 // //----------------------------------------------------------------------
 //
-// void check_hash (stack_t *stk)
+// void check_hash (edu_stack_t *stk)
 // {
 //
 // }

@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <assert.h>
 #include <math.h>
 #include <cstring>
@@ -7,7 +7,7 @@
 
 int main ()
 {
-    stack_t *stk = get_point_stack (__LINE__);
+    edu_stack_t *stk = get_point_stack (__LINE__);
     assert (stk);
 
     stk->creation_file = "stk";
